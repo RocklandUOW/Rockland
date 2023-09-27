@@ -1,7 +1,7 @@
 # Rockland
 educative, fun, and sociable mobile game to be enjoyed by rockhounds all around Australia.
 
-## setup
+## Setup
 ### Windows:
 1. (Optional) install android studio to easily monitor the app without having to have a physical phone always on by your side.
 2. Install node.js LTS and npm
