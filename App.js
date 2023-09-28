@@ -1,12 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import {Text, View } from 'react-native';
-import style from './styles/AppStyle.js'
+import BottomTab from './components/BottomTab'
+import {View, Text} from 'react-native'
+import style from './styles/GlobalStyle'
 
 export default function App() {
   return (
-    <View style={style.container}>
-      <Text>Let's Rock!... land</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <BottomTab />
+  )
 }
