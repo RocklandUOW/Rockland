@@ -16,27 +16,6 @@ const galleryScreenName = 'Gallery'
 
 const Tab = createBottomTabNavigator();
 
-function CustomTabBarButton({children, onPress})
-{
-    <TouchableOpacity
-    style={{
-        top: -30,
-        justifyContent: 'center',
-        alignItems: 'center',
-        ...TabStyle.shadow
-    }}
-    onpress={onPress}>
-        <View style={{
-            width:70,
-            height: 70,
-            borderRadius: 35,
-            backgroundColor: 'tomato',
-        }}>
-            {children}
-        </View>
-    </TouchableOpacity>
-}
-
 export default function BottomTab() {
     return (
         <NavigationContainer>
