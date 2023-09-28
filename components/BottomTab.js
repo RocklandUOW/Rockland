@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import {Text, TouchableOpacity} from 'react-native';
+import {Text} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import TabStyle from '../styles/TabStyle'
 
@@ -57,13 +57,7 @@ export default function BottomTab() {
                 },
             })}>
                 <Tab.Screen name={discoverScreenName} component={Discover} />
-                <Tab.Screen name={cameraScreenName} component={Camera} 
-                    screenOptions={{
-                        tabBarButton: (props) => (
-                            <CustomTabBarButton {...props} />
-                        )
-                    }}
-                />
+                <Tab.Screen name={cameraScreenName} component={Camera} />
                 <Tab.Screen name={galleryScreenName} component={Gallery} />
             </Tab.Navigator>
         </NavigationContainer>   
