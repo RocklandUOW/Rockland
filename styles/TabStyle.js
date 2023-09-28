@@ -7,7 +7,7 @@ const TabStyle = StyleSheet.create({
         left: 20,
         right: 20,
         elevation: 0,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#84C183',
         borderRadius: 15,
         height: 90,
     },
@@ -23,18 +23,64 @@ const TabStyle = StyleSheet.create({
         elevation: 5
     },
 
-    itemStyle: {
-    },
-
     itemTextStyle: {
-        fontSize: 12,
-        top: -10,
-        paddingBottom: 12,
+        color: 'black',
+        fontSize: 14,
+        top: -20,
     },
 
-    itemIcon: {
-        top: 5,
-    }
+    itemTextStyleFocused: {
+        color: 'black',
+        fontSize: 15,
+        top: -20,
+    },
+
+    itemIconStyle: {
+        color: 'black',
+    },
+
+    itemIconStyleFocused: {
+        color: 'black'
+    },
+
+    itemButtonStyle: {
+        color: 'black',
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        borderWidth: 7,
+        borderColor: '#5E9C5D',
+        backgroundColor: '#00FF19',
+        textAlign: 'center',
+        paddingBottom: 20,
+        textAlignVertical: 'center',
+    },
+
+    itemButtonStyleFocused: {
+        color: 'black',
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        borderWidth: 7,
+        borderColor: '#5E9C5D',
+        backgroundColor: '#00FF19',
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        paddingBottom: 20,
+        fontSize: 45,
+    },
+
+    itemButtonTextStyle: {
+        color: 'black',
+        fontSize: 16,
+        bottom: 25,
+    },
+
+    itemButtonTextStyleFocused: {
+        color: 'black',
+        fontSize: 17,
+        bottom: 25,
+    },
   });
 
 export default TabStyle;

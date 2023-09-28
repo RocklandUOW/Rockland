@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
+import {Text, TouchableOpacity} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import TabStyle from '../styles/TabStyle'
 
@@ -16,34 +16,75 @@ const galleryScreenName = 'Gallery'
 
 const Tab = createBottomTabNavigator();
 
+function CustomTabBarButton({children, onPress})
+{
+    <TouchableOpacity
+    style={{
+        top: -30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...TabStyle.shadow
+    }}
+    onpress={onPress}>
+        <View style={{
+            width:70,
+            height: 70,
+            borderRadius: 35,
+            backgroundColor: 'tomato',
+        }}>
+            {children}
+        </View>
+    </TouchableOpacity>
+}
+
 export default function BottomTab() {
     return (
         <NavigationContainer>
             <Tab.Navigator
             screenOptions={({route}) => ({
-                tabBarActiveTintColor: 'tomato',
-                tabBarInactiveTintColor: 'black',
-                tabBarIconStyle: TabStyle.itemIcon,
-                tabBarLabelStyle: TabStyle.itemTextStyle,
-                tabBarItemStyle: TabStyle.itemStyle,
+                headerShown: false,
+                tabBarShowLabel : true,
                 tabBarStyle: [TabStyle.navBar, TabStyle.shadow],
-                tabBarIcon: ({focused, color, size}) => {
+                tabBarIcon: ({focused, size}) => {
                     let iconName;
                     let routeName = route.name;
 
                     if (routeName === discoverScreenName) {
                         iconName = focused ? 'map-marker-radius' : 'map-marker-radius-outline';
-                    } else if (routeName === cameraScreenName) {
-                        iconName = focused ? 'camera' : 'camera-outline';
+                        return <MaterialCommunityIcons style={focused ? TabStyle.itemIconStyleFocused : TabStyle.itemIconStyle} name={iconName} size={size}/>
                     } else if (routeName === galleryScreenName) {
                         iconName = focused ? 'view-gallery' : 'view-gallery-outline';
+                        return <MaterialCommunityIcons style={focused ? TabStyle.itemIconStyleFocused : TabStyle.itemIconStyle} name={iconName} size={size}/>
+                    } else if (routeName === cameraScreenName)
+                    {
+                        iconName = focused ? 'camera' : 'camera-outline';
+                        return <MaterialCommunityIcons style={focused ? TabStyle.itemButtonStyleFocused : TabStyle.itemButtonStyle} name={iconName} size={40}/>
                     }
+                },
+                tabBarLabel: ({focused}) => {
+                    let label = null;
+                    let routeName = route.name;
 
-                    return <MaterialCommunityIcons name={iconName} size={size} color={color} />
+                    if (routeName === discoverScreenName) {
+                        label = routeName;
+                        return <Text style = {focused ? TabStyle.itemTextStyleFocused : TabStyle.itemTextStyle}>{label}</Text>
+                    } else if (routeName === galleryScreenName) {
+                        label = routeName;
+                        return <Text style = {focused ? TabStyle.itemTextStyleFocused : TabStyle.itemTextStyle}>{label}</Text>
+                    } else if (routeName === cameraScreenName) {
+                        label = routeName;
+                        return <Text style = {focused ? TabStyle.itemButtonTextStyleFocused : TabStyle.itemButtonTextStyle}>{label}</Text>
+                    }
                 },
             })}>
                 <Tab.Screen name={discoverScreenName} component={Discover} />
-                
+                <Tab.Screen name={cameraScreenName} component={Camera} 
+                    screenOptions={{
+                        tabBarButton: (props) => (
+                            <CustomTabBarButton {...props} />
+                        )
+                    }}
+                />
                 <Tab.Screen name={galleryScreenName} component={Gallery} />
             </Tab.Navigator>
         </NavigationContainer>   
