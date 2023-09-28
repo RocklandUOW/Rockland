@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
+import {Text} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import TabStyle from '../styles/TabStyle'
 
@@ -21,11 +21,7 @@ export default function BottomTab() {
         <NavigationContainer>
             <Tab.Navigator
             screenOptions={({route}) => ({
-                tabBarActiveTintColor: 'tomato',
-                tabBarInactiveTintColor: 'black',
-                tabBarIconStyle: TabStyle.itemIcon,
-                tabBarLabelStyle: TabStyle.itemTextStyle,
-                tabBarItemStyle: TabStyle.itemStyle,
+                tabBarShowLabel : true,
                 tabBarStyle: [TabStyle.navBar, TabStyle.shadow],
                 tabBarIcon: ({focused, color, size}) => {
                     let iconName;
@@ -33,17 +29,27 @@ export default function BottomTab() {
 
                     if (routeName === discoverScreenName) {
                         iconName = focused ? 'map-marker-radius' : 'map-marker-radius-outline';
-                    } else if (routeName === cameraScreenName) {
-                        iconName = focused ? 'camera' : 'camera-outline';
                     } else if (routeName === galleryScreenName) {
                         iconName = focused ? 'view-gallery' : 'view-gallery-outline';
                     }
 
                     return <MaterialCommunityIcons name={iconName} size={size} color={color} />
                 },
+                tabBarLabel: ({focused}) => {
+                    let label = null;
+                    let routeName = route.name;
+
+                    if (routeName === discoverScreenName) {
+                        label = routeName;
+                    } else if (routeName === galleryScreenName) {
+                        label = routeName;
+                    }
+
+                    return <Text style = {focused ? TabStyle.itemTextStyleFocused : TabStyle.itemTextStyle}>{label}</Text>
+                }
             })}>
                 <Tab.Screen name={discoverScreenName} component={Discover} />
-                
+                <Tab.Screen name={cameraScreenName} component={Camera} />
                 <Tab.Screen name={galleryScreenName} component={Gallery} />
             </Tab.Navigator>
         </NavigationContainer>   

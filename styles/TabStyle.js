@@ -23,13 +23,14 @@ const TabStyle = StyleSheet.create({
         elevation: 5
     },
 
-    itemStyle: {
+    itemTextStyle: {
+        color: 'black',
+        fontSize: 12,
     },
 
-    itemTextStyle: {
+    itemTextStyleFocused: {
+        color: 'tomato',
         fontSize: 12,
-        top: -10,
-        paddingBottom: 12,
     },
 
     itemIcon: {
