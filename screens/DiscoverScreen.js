@@ -4,7 +4,7 @@ import MapView from 'react-native-maps';
 import * as Location from 'expo-location';
 import React, {useState, useEffect} from 'react';
 
-export default function Discover({navigation}) {
+export default function DiscoverScreen({navigation}) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
 
