@@ -1,7 +1,7 @@
 import * as MediaLibrary from 'expo-media-library';
 import { predictImage } from "../functions/fetches";
 
-export async function takePicture (cameraRef, setImage) {
+export async function takePicture (cameraRef, setImage, setRockType) {
     const options = {
         // base64: true,
         skipProcessing: true,
@@ -11,7 +11,7 @@ export async function takePicture (cameraRef, setImage) {
         try {
             const data = await cameraRef.current.takePictureAsync(options);
             setImage(data.uri);
-            predictImage(data.uri);
+            predictImage(data.uri, setRockType);
             // savePicture(data.uri)
         } catch(e) {
             console.log(e);

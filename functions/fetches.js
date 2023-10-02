@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-export const predictImage = async (imageuri) => {
+export const predictImage = async (imageuri, setRockType) => {
+    setRockType(null);
     const imageData = new FormData()
 
     imageData.append("file", {
@@ -15,7 +16,7 @@ export const predictImage = async (imageuri) => {
             headers: { 'Content-Type': 'multipart/form-data',
                         'Accept': 'application/json' },
         }).then(res => {
-            console.log(res.data);
+            setRockType(res.data.class_name);
         }).catch(err => {
             console.log('bruh');
         });

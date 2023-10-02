@@ -22,6 +22,7 @@ export default function BottomTab() {
     // camera functionability :D
     const cameraRef = useRef(null);
     const [image, setImage] = useState(null); 
+    const [rockType, setRockType] = useState(null);
 
     return (
         <NavigationContainer>
@@ -83,13 +84,13 @@ export default function BottomTab() {
                             } 
                             else 
                             {
-                                takePicture(cameraRef, setImage);
+                                takePicture(cameraRef, setImage, setRockType);
                             }
                         },
                     })}
                 />
                 <Tab.Screen name={galleryScreenName}
-                    children={()=> <GalleryScreen image={image}/> }
+                    children={()=> <GalleryScreen image={image} rockType={rockType} />}
                 />
             </Tab.Navigator>
         </NavigationContainer>   
