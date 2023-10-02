@@ -4,7 +4,7 @@ import {Text, View} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import TabStyle from '../styles/TabStyle'
 import { takePicture } from "../functions/pictureFunctions";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 // screens imports
 import DiscoverScreen from '../screens/DiscoverScreen'
@@ -88,7 +88,9 @@ export default function BottomTab() {
                         },
                     })}
                 />
-                <Tab.Screen name={galleryScreenName} component={GalleryScreen} />
+                <Tab.Screen name={galleryScreenName}
+                    children={()=> <GalleryScreen image={image}/> }
+                />
             </Tab.Navigator>
         </NavigationContainer>   
     )
