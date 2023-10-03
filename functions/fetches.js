@@ -18,6 +18,7 @@ export const predictImage = async (imageuri, setRockType) => {
         }).then(res => {
             setRockType(res.data.class_name);
         }).catch(err => {
-            console.log('bruh');
+            console.log('bruh', err);
+            setRockType("error detected somewhere")
         });
 }
