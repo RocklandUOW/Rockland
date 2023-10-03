@@ -17,7 +17,12 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.RocklandAlpha.app"
+      "package": "com.RocklandAlpha.app",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDzWU_TPQiplu6G5c6XnK42fjcDEUKuWOQ"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
