@@ -1,12 +1,13 @@
 import {View, Text, StyleSheet} from 'react-native';
 import GlobalStyle from '../styles/GlobalStyle';
-import MapView from 'react-native-maps';
+import {MapView, PROVIDER_GOOGLE} from 'react-native-maps';
 import * as Location from 'expo-location';
 import React, {useState, useEffect} from 'react';
 
 export default function DiscoverScreen({navigation}) {
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
+    const [text, setText] = useState("waiting...");
 
     useEffect(() => {
         (async () => {
@@ -24,14 +25,12 @@ export default function DiscoverScreen({navigation}) {
         })();
       }, []);
 
-    let text = "waiting...";
-
     if (errorMsg)
     {
-        text(errorMsg);
+      setText(errorMsg);
     }
     else if (location) {
-        text = JSON.stringify(location);
+      setText(JSON.stringify(location));
     }
 
     return (
@@ -39,6 +38,7 @@ export default function DiscoverScreen({navigation}) {
             <MapView
             showsMyLocationButton={true}
             showsUserLocation={true}
+            provider={PROVIDER_GOOGLE}
             style={StyleSheet.absoluteFill}
              />
             {/* <Text> {text} </Text> */}
