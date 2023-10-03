@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import TabStyle from '../styles/TabStyle'
 import { takePicture } from "../functions/pictureFunctions";
@@ -8,8 +8,8 @@ import { useRef, useState, useEffect } from "react";
 
 // screens imports
 import DiscoverScreen from '../screens/DiscoverScreen'
-import CameraScreen from '../screens/CameraScreen'
-import GalleryScreen from '../screens/GalleryScreen'
+import {CameraScreen} from '../screens/CameraScreen'
+import {GalleryScreen} from '../screens/GalleryScreen'
 
 // the name of the page to be referenced
 const discoverScreenName = 'Discover'
